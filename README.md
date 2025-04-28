@@ -28,6 +28,8 @@ Raw CSV → S3 (Partitioned by snapshot_day)
     Amazon QuickSight Dashboards
 ```
 
+https://github.com/husskhosravi/athena-glue-s3-pipeline/blob/main/screenshots/workflow.png
+
 ---
 
 ### 🔧 Tech Stack
@@ -75,6 +77,8 @@ s3://<my-bucket>/orders/
 - Connected Athena to the Glue data catalog
 - Ran queries on raw S3 files *without loading into any database*
 - Example query:
+- 
+https://github.com/husskhosravi/athena-glue-s3-pipeline/blob/main/screenshots/query1.png
 
 ```sql
 SELECT category, SUM(sales) AS total_sales
@@ -85,20 +89,15 @@ GROUP BY category;
 Partitioning by date drastically improves Athena query speed and reduces cost.
 Using `WHERE snapshot_day = ...` reduced scanned data by **~54%**.
 
+https://github.com/husskhosravi/athena-glue-s3-pipeline/blob/main/screenshots/query2.png
+
 #### ✅ Amazon QuickSight
 - Connected QuickSight to Athena as the data source
 - Imported data into SPICE for faster performance
 - Built:
   - Bar chart: Sales by Category
   - Pie chart: Profit by City
-
----
-
-### 📊 Example Insights
-
-- Total sales by product category
-- Profit concentration by region/city
-- Query cost minimisation via snapshot-day partition filtering
+https://github.com/husskhosravi/athena-glue-s3-pipeline/blob/main/screenshots/quicksight.png
 
 ---
 
