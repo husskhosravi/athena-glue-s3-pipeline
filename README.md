@@ -97,7 +97,7 @@ GROUP BY category;
   - Bar chart: Sales by Category
   - Pie chart: Profit by City
 
-![query2](https://github.com/user-attachments/assets/c3cf4687-d687-46c6-a013-b7402e693395)
+![quicksight](https://github.com/user-attachments/assets/2f65b3e2-8ee6-4a15-a1a3-f627f909302a)
 
 ---
 
