@@ -27,7 +27,7 @@ Raw CSV → S3 (Partitioned by snapshot_day)
            ↓
     Amazon QuickSight Dashboards
 ```
-![workflow](https://github.com/user-attachments/assets/47a364ee-4d35-428c-a219-dba635b8d0ed)
+![workflow](https://github.com/user-attachments/assets/6299b8f8-a586-40f5-99bf-6e1bc5736330)
 
 ---
 
