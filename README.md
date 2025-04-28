@@ -49,7 +49,7 @@ Raw CSV → S3 (Partitioned by snapshot_day)
 s3://<my-bucket>/orders/
   ├── snapshot_day=2017-01-01/
   │   └── orders_1.csv
-  └── snapshot_day=2017-01-04/
+  └── snapshot_day=2017-01-02/
       └── orders_2.csv
 ```
 
