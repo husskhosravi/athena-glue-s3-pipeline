@@ -81,12 +81,10 @@ s3://<my-bucket>/orders/
 Partitioning by date drastically improves Athena query speed and reduces cost.
 
 Using `WHERE snapshot_day = ...` reduced scanned data by **~54%**.
-- Example query:
+- Example query to show the improvement caused by partitioning:
 ```sql
-SELECT category, SUM(sales) AS total_sales
-FROM orders
+SELECT * FROM "db_hkhosravi"."orders"
 WHERE snapshot_day = '2017-01-01'
-GROUP BY category;
 ```
 ![query2](https://github.com/user-attachments/assets/0236a096-c66a-493a-9a30-77325ff6ee36)
 
