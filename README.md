@@ -27,8 +27,7 @@ Raw CSV → S3 (Partitioned by snapshot_day)
            ↓
     Amazon QuickSight Dashboards
 ```
-
-https://github.com/husskhosravi/athena-glue-s3-pipeline/blob/main/screenshots/workflow.png
+![workflow](https://github.com/user-attachments/assets/47a364ee-4d35-428c-a219-dba635b8d0ed)
 
 ---
 
