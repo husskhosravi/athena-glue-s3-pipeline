@@ -1,2 +1,119 @@
-# athena-glue-s3-pipeline
- End-to-end project using S3, Glue, Athena, and QuickSight to build a secure, automated data processing and visualisation workflow.
+## 📦 Superstore Sales – End-to-End Data Pipeline on AWS
+
+This project demonstrates my ability to build a **fully serverless data engineering pipeline** on AWS, covering everything from data ingestion to visual analytics using native AWS services.
+
+---
+
+### 🚀 What I Built
+
+I designed an automated pipeline to process incremental sales data from a retail superstore using the following AWS services:
+
+- **S3** – Cloud storage for raw files
+- **IAM** – Role-based access and user provisioning
+- **Glue** – Metadata cataloguing via crawlers
+- **Athena** – Serverless SQL querying on S3 data
+- **QuickSight** – Interactive dashboard for analysis
+
+---
+
+### 🧱 Architecture
+
+```
+Raw CSV → S3 (Partitioned by snapshot_day)
+           ↓
+     AWS Glue Crawler → Data Catalog
+           ↓
+      Amazon Athena (SQL)
+           ↓
+    Amazon QuickSight Dashboards
+```
+
+---
+
+### 🔧 Tech Stack
+
+| Tool/Service | Purpose |
+|--------------|---------|
+| **S3** | Raw data storage (partitioned folders by snapshot date) |
+| **Glue** | Metadata extraction and partition awareness |
+| **Athena** | Ad hoc querying with cost-efficient scanning |
+| **QuickSight** | Visual reporting and dashboard sharing |
+| **IAM** | Secure access management and service-level roles |
+
+---
+
+### 📁 S3 Folder Structure
+
+```
+s3://<my-bucket>/orders/
+  ├── snapshot_day=2017-01-01/
+  │   └── orders_1.csv
+  └── snapshot_day=2017-01-04/
+      └── orders_2.csv
+```
+
+---
+
+### 🧪 What I Did – Step by Step
+
+#### ✅ IAM Setup
+- Created a separate IAM user for development (no root user usage).
+- Assigned admin permissions and created a Glue-compatible IAM role.
+
+#### ✅ Data Upload to S3
+- Cleaned and filtered daily order data from the Kaggle superstore dataset.
+- Saved files in `.csv` format and uploaded to partitioned folders.
+
+#### ✅ AWS Glue
+- Created a **Glue database** to store metadata.
+- Configured a **crawler** to:
+  - Auto-detect schema
+  - Recognise partitions using folder names
+  - Maintain an up-to-date **data catalog** for Athena
+
+#### ✅ Amazon Athena
+- Connected Athena to the Glue data catalog
+- Ran queries on raw S3 files *without loading into any database*
+- Example query:
+
+```sql
+SELECT category, SUM(sales) AS total_sales
+FROM orders
+WHERE snapshot_day = '2017-01-01'
+GROUP BY category;
+```
+Partitioning by date drastically improves Athena query speed and reduces cost.
+Using `WHERE snapshot_day = ...` reduced scanned data by **~54%**.
+
+#### ✅ Amazon QuickSight
+- Connected QuickSight to Athena as the data source
+- Imported data into SPICE for faster performance
+- Built:
+  - Bar chart: Sales by Category
+  - Pie chart: Profit by City
+
+---
+
+### 📊 Example Insights
+
+- Total sales by product category
+- Profit concentration by region/city
+- Query cost minimisation via snapshot-day partition filtering
+
+---
+
+### 💡 Key Skills Demonstrated
+
+- AWS IAM + security best practices  
+- Efficient cloud data partitioning strategies  
+- Glue crawler configuration for schema detection  
+- Serverless querying with Athena  
+- Real-time dashboards with QuickSight (SPICE vs live mode)
+
+---
+
+### 🏁 Next Steps
+
+- Add trigger-based automation using AWS Lambda  
+- Integrate with a real-time stream via Kinesis or EventBridge  
+- Add notification layer for insights using SNS  
