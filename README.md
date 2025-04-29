@@ -1,6 +1,6 @@
 ## 📦 Superstore Sales – End-to-End Data Pipeline on AWS
 
-This project demonstrates my ability to build a **fully serverless data engineering pipeline** on AWS, covering everything from data ingestion to visual analytics using native AWS services.
+This project demonstrates my ability to build a **fully serverless data engineering pipeline** on AWS, covering everything from data ingestion to visual analytics using native AWS services. It uses the Superstore Dataset sourced from Kaggle, containing retail transactional data across multiple categories such as customer orders, product segments, sales, profits, shipping methods and regions.
 
 ---
 
